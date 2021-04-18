@@ -21,6 +21,7 @@ def code_img(code):
     .txt1 {{
     font: 12pt "Times New Roman";
     fill: "black";
+    background: "white";
     }}
     </style>'''+img+'</svg>'
     return img

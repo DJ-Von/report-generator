@@ -2,6 +2,7 @@ from docxtpl import DocxTemplate
 import yaml
 import sys
 from docx import Document
+import executor
 
 doc = DocxTemplate("templ.docx")
 
@@ -16,8 +17,15 @@ var_num = conf.get('var_num')
 img = conf.get('img')
 
 context = {'autor_name': autor_name, 'group': group, 'var_num': var_num, 'i' : i, 'work_name' : work_name, 'task': task}
-
 doc.replace_pic('car.jpg', img)
 
 doc.render(context)
+
 doc.save("templ-final.docx")
+
+html = executor.code_gen(conf.get('file'))
+
+print(html)
+q = open('1.svg', 'w')
+q.write(html)
+q.close()
