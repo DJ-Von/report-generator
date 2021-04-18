@@ -19,7 +19,8 @@ def code_img(code):
     width="400px" height="{y}px">
     <style>
     .txt1 {{
-    font: 12pt "Times New Roman";
+    font-size: 4pt;
+    font-family: Courier New, monospace;
     fill: "black";
     background: "white";
     }}
@@ -39,10 +40,11 @@ def result_img(result):
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:ev="http://www.w3.org/2001/xml-events"
-    width="400px" height="{y}px">
+    width="570px" height="{y}px">
     <style>
     .txt {{
-    font: 12pt "Lucida Console";
+    font-size: 8pt;
+    font-family: Courier New, monospace;
     fill: #fff;
     }}
     </style>

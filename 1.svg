@@ -5,7 +5,8 @@
     width="400px" height="400px">
     <style>
     .txt1 {
-    font: 12pt "Times New Roman";
+    font-size: 4pt;
+    font-family: Courier New, monospace;
     fill: "black";
     background: "white";
     }

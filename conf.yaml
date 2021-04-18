@@ -15,7 +15,7 @@ task: |-
 
 file: |-
   num_sum.py
+
 img: |-
   1.svg
-
 ...
