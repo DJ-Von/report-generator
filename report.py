@@ -17,7 +17,7 @@ img = conf.get('img')
 
 context = {'autor_name': autor_name, 'group': group, 'var_num': var_num, 'i' : i, 'work_name' : work_name, 'task': task}
 
-doc.replace_pic('car.jpg','ok.jpg')
+doc.replace_pic('car.jpg', img)
 
 doc.render(context)
 doc.save("templ-final.docx")
