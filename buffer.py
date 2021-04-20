@@ -1,6 +1,6 @@
 print('Введите число: ', end='')
-print(999)
-x = 999
+print(100)
+x = 100
 first = x // 100
 
 second = x // 10 % 10

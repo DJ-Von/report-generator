@@ -16,7 +16,7 @@ def code_img(code):
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:ev="http://www.w3.org/2001/xml-events"
-    width="400px" height="{y}px">
+    width="200px" height="{y}px">
     <style>
     .txt1 {{
     font-size: 4pt;

@@ -1,10 +1,8 @@
-import subprocess
+import os
 import sys
 import ast
 import _ast
 from ast_decompiler import decompile
-import img_gen
-from pascal import exe
 
 
 def is_read(tree):
@@ -55,7 +53,4 @@ c=0
 
 def execute(file, data):
     print(compiler(open(file, 'r').read(), data), file=open('buffer.py', 'w'))
-    return img_gen.result_img(subprocess.getoutput('python buffer.py'))
-
-def code_gen(file):
-    return img_gen.code_img(exe(file))
+    return os.startfile('buffer.py')
