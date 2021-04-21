@@ -3,7 +3,7 @@ import sys
 import ast
 import _ast
 from ast_decompiler import decompile
-
+import subprocess
 
 def is_read(tree):
     try:
@@ -53,4 +53,4 @@ c=0
 
 def execute(file, data):
     print(compiler(open(file, 'r').read(), data), file=open('buffer.py', 'w'))
-    return os.startfile('buffer.py')
+    return subprocess.call(["buffer.py"], shell=True)
