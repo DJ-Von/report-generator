@@ -53,4 +53,4 @@ c=0
 
 def execute(file, data):
     print(compiler(open(file, 'r').read(), data), file=open('buffer.py', 'w'))
-    return subprocess.call(["buffer.py"], shell=True)
+    return os.system('python3.9 buffer.py')
