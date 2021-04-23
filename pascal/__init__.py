@@ -19,6 +19,7 @@ def exe(file):
             _type = type_to_type.get(var.get(i))
             variables += f'    {i}: {_type};\n'
         out += 'Var\n'+variables+'\n'
+    transPYler.core.variables = {}
     transPYler.blocks.nesting_level += 1
     tab = '\n'+'    '*transPYler.blocks.nesting_level
     end = ('\n'+'    '*(transPYler.blocks.nesting_level-1))+'End.'
