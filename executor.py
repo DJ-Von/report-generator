@@ -4,7 +4,8 @@ import ast
 import _ast
 from ast_decompiler import decompile
 import subprocess
-
+import platform
+import img_gen
 def is_read(tree):
     try:
         name = tree.value.func.id
@@ -53,4 +54,13 @@ c=0
 
 def execute(file, data):
     print(compiler(open(file, 'r').read(), data), file=open('buffer.py', 'w'))
-    return os.system('python3.9 buffer.py')
+    
+    
+    if platform.system() == "Linux":
+    # linux
+        process = subprocess.Popen(['python3.9', 'buffer.py'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        out, err = process.communicate()
+        return img_gen.result_img(str(out, encoding='utf-8'))
+    elif platform.system() == "Windows":
+    # Windows...
+        return os.system('buffer.py')

@@ -1,6 +1,6 @@
-x = int(input("Введите число: "))
+x = int(input("Enter number: "))
 first = x//100
 second = x//10%10
 third = x%10
-msg = "Сумма цифр в числе равна: "
+msg = "Sum is: "
 print(msg, first+second+third)

@@ -5,23 +5,49 @@ from docx import Document
 import executor
 import img_gen
 from pascal import exe
-import executor
+import platform
+import os
 import cairosvg
-from docx.shared import Inches
+import pathlib
+
+def out_yellow(text):
+    print("\033[33m {}" .format(text))
+out_yellow('Если выдаёт ошибку  про файл, просто удали всё из папки img\n\n\n\n')
 
 doc = DocxTemplate("templ.docx")
 
 #Получение данных из конфига
-conf = yaml.load((open(sys.argv[1])).read())
+conf = yaml.full_load((open(sys.argv[1], encoding='utf-8')).read())
+k = 0
+t = 0
 for n, i in enumerate(conf.get('tasks')):
+    open(i.get('file')[:-3]+'.pas', 'w').write(exe(i.get('file')))
     code = exe(i.get('file'))
-    open(i.get('file')[:-3]+'.pas', 'w').write(code)
-    print(f'code = ', code)
-    open('img_buffer.svg', 'w').write(img_gen.code_img(code))
-    cairosvg.svg2png(url='img_buffer.svg', write_to=f'{i.get("file")[:-3]}.png')
-    conf['tasks'][n] |= {'code': InlineImage(doc, f'{i.get("file")[:-3]}.png')}
+
+    if platform.system() == "Windows":
+        os.mkdir('img\\'+str(i.get('num')))
+        my_img = open('img\\'+str(i.get('num'))+'\\'+str(i.get('num'))+'_code.svg', 'w').write(img_gen.code_img(code))
+        #path = "img\\"+str(i.get('num'))+"\\"+str(i.get('num'))+"_code.svg"
+    elif platform.system() == "Linux":
+        os.mkdir('img/'+str(i.get('num')))
+        my_img = open('img/'+str(i.get('num'))+'/'+str(i.get('num'))+'_code.svg', 'w').write(img_gen.code_img(code))
+        path = 'img/'+str(i.get('num'))+'/'+str(i.get('num'))+'_code.svg'
+        path_png = path[0:-4]+'.png'
+        print(path_png)
+        k=0
+
+    cairosvg.svg2png(url=path, write_to=path_png)
+    conf['tasks'][n] |= {'code': InlineImage(doc, path_png)}
+    
     for j in i.get('data'): 
         executor.execute(i.get('file'), j)
+        k += 1
+        print(k)
+        executor.execute(i.get('file'), j)
+        if platform.system() == "Windows":
+        	my_img = open('img\\'+str(i.get('num'))+'\\'+str(i.get('num'))+'_start'+str(k)+'.svg', 'w').write(executor.execute(i.get('file'), j))
+        elif platform.system() == "Linux":
+        	my_img = open('img/'+str(i.get('num'))+'/'+str(i.get('num'))+'_start'+str(k)+'.svg', 'w').write(executor.execute(i.get('file'), j))
 
 doc.render(conf)
-doc.save("templ-final.docx")
+doc.save("templ-final.docx")  

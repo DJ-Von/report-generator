@@ -1,0 +1,15 @@
+
+<svg version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    width="500px" height="340px">
+
+    <style>
+    .txt1 {
+    font-size: 10pt;
+    font-family: Courier New, monospace;
+    
+    
+    }
+    </style><text class="txt1" x="10" y="20" fill="black" xml:space="preserve"><tspan style="font-weight: bold;">program</tspan> main;</text><text class="txt1" x="10" y="40" fill="black" xml:space="preserve"><tspan style="font-weight: bold;">uses</tspan> crt;</text><text class="txt1" x="10" y="60" fill="black" xml:space="preserve"></text><text class="txt1" x="10" y="80" fill="black" xml:space="preserve"><tspan style="font-weight: bold;">var</tspan></text><text class="txt1" x="10" y="100" fill="black" xml:space="preserve">    a: Integer;</text><text class="txt1" x="10" y="120" fill="black" xml:space="preserve">    b: Integer;</text><text class="txt1" x="10" y="140" fill="black" xml:space="preserve">    msg: String;</text><text class="txt1" x="10" y="160" fill="black" xml:space="preserve"></text><text class="txt1" x="10" y="180" fill="black" xml:space="preserve"><tspan style="font-weight: bold;">begin</tspan></text><text class="txt1" x="10" y="200" fill="black" xml:space="preserve">    Write('Введите число a: ');</text><text class="txt1" x="10" y="220" fill="black" xml:space="preserve">    Readln(a);</text><text class="txt1" x="10" y="240" fill="black" xml:space="preserve">    Write('Введите число b: ');</text><text class="txt1" x="10" y="260" fill="black" xml:space="preserve">    Readln(b);</text><text class="txt1" x="10" y="280" fill="black" xml:space="preserve">    msg := 'Sum is: ';</text><text class="txt1" x="10" y="300" fill="black" xml:space="preserve">    Writeln(msg, ' ', a + b);</text><text class="txt1" x="10" y="320" fill="black" xml:space="preserve"><tspan style="font-weight: bold;"><tspan style="font-weight: bold;">end</tspan>.</tspan></text></svg>
