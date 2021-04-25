@@ -8,7 +8,6 @@ from pascal import exe
 import platform
 import os
 import cairosvg
-import pathlib
 
 doc = DocxTemplate("templ.docx")
 
