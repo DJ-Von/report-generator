@@ -52,4 +52,4 @@ for n, i in enumerate(conf.get('tasks')):
             	my_img = open('img/'+str(i.get('num'))+'/'+str(i.get('num'))+'_start'+str(k)+'.svg', 'w').write(executor.execute(i.get('file'), j))
 
 doc.render(conf)
-doc.save("Отчёт"+str(conf.get('work_num'))+".docx")
+doc.save("Отчёт "+str(conf.get('work_num'))+".docx")
