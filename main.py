@@ -2,6 +2,8 @@ import os
 from flask import Flask, request, redirect, url_for
 from werkzeug.utils import secure_filename
 from flask import send_from_directory
+from report import g
+
 
 UPLOAD_FOLDER = ''
 ALLOWED_EXTENSIONS = set(['py'])
@@ -36,7 +38,7 @@ def upload_file():
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 # Save the filename into a list, we'll use it later
                 filenames.append(filename)
-                os.system('python3.9 report.py')
+                g()
                 links += '''<a href="'''+url_for('uploaded_file', filename=filename[:-3]+'.pas')+'''"  download>Скачать '''+filename[:-3]+'.pas'+'''</a><br>'''
         #links += '''<a href="'''+url_for('uploaded_file', filename='templ-final.docx')+'''"  download>Скачать отчёт</a><br>'''
         links += '''<a href="/templ-final.docx" download>Скачать отчёт</a>'''
@@ -74,7 +76,9 @@ def upload_file():
         $form.insertBefore($input, $add);
       });
       </script>-->
-      <p><input type=submit value=Upload></p>
+      <p><button type=submit>Генерировать отчет</button></p>
       
     </form>
     '''
+
+app.run()

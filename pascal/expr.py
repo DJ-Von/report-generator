@@ -33,6 +33,13 @@ def compare(els, ops):
 def bool_op(els, op):
     return els[0]+" "+"".join([op+" "+i for i in els[1:]])
 
+@handler("list")
+def _list(ls, _type):
+    return {'list': ls, 'type': _type} 
+@handler("index")
+def index(arr, val):
+    return f"{arr}[{val}]"
+
 @handler("call")
 def call(name, args):
     args = ", ".join(args)

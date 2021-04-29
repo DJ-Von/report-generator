@@ -2,6 +2,12 @@ import _ast
 from .transPYler import macro, blocks
 
 
+type_to_type = {"int": "Integer",
+                "str": "String",
+                "float": "Real"
+                }
+
+
 def is_read(tree):
     try:
         name = tree.value.func.id
@@ -40,3 +46,14 @@ def write(*args):
     arg = list(map(lambda a: a.replace('"', '\''), args))
     arg = ", ' ', ".join(arg)
     return {'val': f'Writeln({arg})'}
+
+def _list(l, r):
+    ls = r.get('val').get('list')
+    arr = ''
+    var = l.get('val')
+    blocks.add_var(var, f'array [0..{len(ls)-1}] of {type_to_type.get(r.get("val").get("type"))}')
+    for n, i in enumerate(ls):
+        arr += f'{var}[{n}] := {i};\n'
+    return arr
+macro({('any', 'list', '='): _list
+})

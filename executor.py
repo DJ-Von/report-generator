@@ -38,19 +38,9 @@ def compiler(code, data):
             strings.append(read(i, data))
         else:
             strings.append(decompile(i))
+    print('------------\n', '\n'.join(strings), '\n----------------------\n')
     return '\n'.join(strings)
-
-o=0
-c=0
-#def execute(file, data):
-#    global o
-#    print(compiler(open(file, 'r').read(), data), file=open('buffer.py', 'w'))
-#    open(f'test{o}.svg', 'w').write(img_gen.result_img(subprocess.getoutput('python buffer.py')))
-
-#def code_gen(file):
-#    global c
-#    open(f'test_{c}.svg', 'w').write(img_gen.code_img(exe(file)))
 
 def execute(file, data):
     print(compiler(open(file, 'r').read(), data), file=open('buffer.py', 'w'))
-    return os.system('python3.9 buffer.py')
+    return subprocess.getoutput('python3.9 buffer.py')

@@ -1,8 +1,5 @@
-print('Введите а', end='')
-print(7)
-a = 7
-print('Ввeдите b', end='')
-print(6)
-b = 6
-print(a + b)
+a = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+
+for i in range(7):
+    print(a[i])
 

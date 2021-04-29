@@ -16,7 +16,9 @@ def expr(expr):
 def assign(expr):
     value = parser(expr.value)
     var = parser(expr.targets[0])
+    print(2)
     if macro := what_macro((var, value, '=')):
+        print(1)
         return macro(var, value)
     _type = value.get("type")
     if type(expr.targets[0]) == _ast.Name: # Могут быть изменения массивов (a[0] = 1)

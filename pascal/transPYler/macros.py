@@ -6,8 +6,10 @@ from .ast_decompiler import decompile
 def what_macro(name):
     if type(name) == tuple:
         name = (transpyler_type(name[0]), transpyler_type(name[1]), name[2])
+        print(name)
         ol_data = [(name[0], name[1], name[2]),
                    (name[0], name[1], 'any'),
+                   ('any', name[1], name[2]),
                    (name[0], 'any', name[2]),
                    ('any', 'any', name[2]),
                    ('any', 'any', 'any'),

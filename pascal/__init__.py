@@ -1,11 +1,7 @@
 from . import transPYler
 from . import expr, blocks, macros
+import re
 
-
-type_to_type = {"int": "Integer",
-                "str": "String",
-                "float": "Real"
-                }
 
 def exe(file):
     out = ''
@@ -16,7 +12,9 @@ def exe(file):
     if var:
         variables = ""
         for i in var:
-            _type = type_to_type.get(var.get(i))
+            _type = macros.type_to_type.get(var.get(i))
+            if not(_type):
+                _type = var.get(i)
             variables += f'    {i}: {_type};\n'
         out += 'Var\n'+variables+'\n'
     transPYler.core.variables |= {"main": {}}

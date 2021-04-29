@@ -29,6 +29,12 @@ def _else(body):
 def else_if(_if):
     return "else "+_if
 
+@handler("c_like_for")
+def c_like_for(var, body, param):
+    start, finish, step = param
+    blocks.add_var(var, 'int')
+    return f"for {var} := {start} to {finish}-1 do {body};"
+
 @handler("statement_block")
 def statement_block(body):
     tab = '\n'+'    '*blocks.nesting_level
