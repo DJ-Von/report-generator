@@ -3,7 +3,7 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:ev="http://www.w3.org/2001/xml-events"
-    width="570px" height="160px">
+    width="570px" height="60px">
     <style>
     .txt {
     font-size: 10pt;
@@ -11,4 +11,4 @@
     fill: #fff;
     }
     </style>
-    <rect x="0" y="0" width="400px" height="160px" fill="black" /><text class="txt" x="10" y="20" xml:space="preserve">mon</text><text class="txt" x="10" y="40" xml:space="preserve">tue</text><text class="txt" x="10" y="60" xml:space="preserve">wed</text><text class="txt" x="10" y="80" xml:space="preserve">thu</text><text class="txt" x="10" y="100" xml:space="preserve">fri</text><text class="txt" x="10" y="120" xml:space="preserve">sat</text><text class="txt" x="10" y="140" xml:space="preserve">sun</text></svg>
+    <rect x="0" y="0" width="400px" height="60px" fill="black" /><text class="txt" x="10" y="20" xml:space="preserve">Введите число: 100</text><text class="txt" x="10" y="40" xml:space="preserve">Сумма цифр в числе равна:  1</text></svg>

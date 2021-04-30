@@ -1,0 +1,61 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css');
+
+*{
+	font-family: 'Open Sans', 'sans-serif', 'FontAwesome';
+}
+body{
+    background: #4d6ea1;
+}
+h1{
+	color: rgb(255, 255, 255);
+	margin: 20px auto 0;
+	width: 200px;
+	text-align: center;
+}
+#wrapper{
+	position: absolute;
+	width: 320px;
+	left: 50%;
+	margin-left: -160px;
+	top: 50%;
+	margin-top: -75px;
+}
+
+.add {
+    cursor: pointer;
+    background: #e0ebe6;
+    width: 20px;
+    height: 22px;
+    text-align: center;
+    border-radius: 2px;
+    margin-top: 10px;
+
+}
+
+.del {
+    cursor: pointer;
+    background: #e0ebe6;
+    width: 20px;
+    height: 22px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.form input {
+  display: block;
+}
+
+.one-task{
+	background: #fff;
+	width: 20%;
+	height: 50%;
+	padding: 5px 5px 5px 5px;
+	text-align: left;
+	border-radius: 5px;
+	margin-bottom: 5px;
+}
+
+textarea{
+	max-width: 70%;
+}

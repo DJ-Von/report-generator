@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, redirect, url_for
+from flask import Flask, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 from flask import send_from_directory
 from report import g
@@ -23,9 +23,41 @@ def uploaded_file(filename):
 def upload_file():
     links = ''
     if request.method == 'POST':
-        conf = request.form.get('text')
-        f = open('conf.yaml', 'w').write(conf)
+        autor = request.form.get('autor')
+        work_num = request.form.get('work_num')
+        work_name = request.form.get('work_name')
+        conf = f"""
+---
+autor: {autor}
+work_name: |-
+  {work_name}
+work_num: {work_num}
+tasks:"""
 
+        counter = int(request.form.get('counter')) 
+        for i in range(counter):
+            task = request.form.get(str(i+1)+'task')
+            num = request.form.get(str(i+1)+'num')
+            data = request.form.get(str(i+1)+'data')
+            file_name = request.form.get(str(i+1)+'file_name')
+            starts = request.form.get(str(i+1)+'starts')
+            print('Задача: '+str(i+1))
+            print(task)
+            
+            conf += f"""
+  - about: |-
+      {task}
+    num: {num}
+    data:
+{data}
+    file: {file_name}
+    starts: {starts}
+"""
+            
+
+        conf += f"..."
+        
+        f = open('conf.yaml', 'w').write(conf)
         uploaded_files = request.files.getlist("file[]")
         filenames = []
         for file in uploaded_files:
@@ -38,47 +70,13 @@ def upload_file():
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 # Save the filename into a list, we'll use it later
                 filenames.append(filename)
-                g()
                 links += '''<a href="'''+url_for('uploaded_file', filename=filename[:-3]+'.pas')+'''"  download>Скачать '''+filename[:-3]+'.pas'+'''</a><br>'''
-        #links += '''<a href="'''+url_for('uploaded_file', filename='templ-final.docx')+'''"  download>Скачать отчёт</a><br>'''
         links += '''<a href="/templ-final.docx" download>Скачать отчёт</a>'''
+        g()
         return '''<p>'''+links+'''</p><br>
                   <a href = "/">На главную</a>  
         '''
                 
-    return '''
-    <!doctype html>
-    <title>Upload new File</title>
-    <style>
-        .add {
-            cursor: pointer;
-        }
-        
-        .form input {
-            display: block;
-        }
-    </style>
-    <h1>Upload new File</h1>
-    <form action="" method=post enctype=multipart/form-data>
-      <p><textarea rows="10" cols="45" name="text"></textarea></p>
-      <input type="file" multiple="" name="file[]" class="amount" accept=".py">
-     <!--<div class="form">
-        
-        <div class="add">+</div>
-      </div>
-      <script type="text/javascript">
-        var $add = document.getElementsByClassName('add')[0];
-        var $form = document.getElementsByClassName('form')[0];
-        $add.addEventListener('click', function(event) {
-        var $input = document.createElement('input');
-        $input.type = 'file';
-        $input.classList.add('amount');
-        $form.insertBefore($input, $add);
-      });
-      </script>-->
-      <p><button type=submit>Генерировать отчет</button></p>
-      
-    </form>
-    '''
+    return render_template('index.html')
 
 app.run()
