@@ -3,14 +3,41 @@
    box-sizing: border-box;
 }
 body {
-   background: #303030;
+   margin: 0;
+   padding: 0;
 }
+
+.communism{
+	background: #303030;
+	min-width: 100vh;
+	min-height: 100vh;
+}
+
+.lenin{
+	background: #c42e2e;
+	min-width: 100vh;
+	min-height: 100vh;
+	margin: 0;
+   padding: 0;
+   text-align: center;
+}
+
+.lenin h1{
+	margin: 0;
+	text-align: center;
+	color: white;
+	font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 30pt;
+}
+
 .decor {
    position: relative;
    max-width: 400px;
-   margin: 50px auto 0;
+   margin: auto;
    background: white;
    border-radius: 30px;
+
 }
 .form-left-decoration, .form-right-decoration {
    content: "";
@@ -156,13 +183,13 @@ body {
 	width: 0px;
 }
 
-a{
+.for_download{
 	color: black;
 	text-decoration: none;
 	background: white;
 	font-family: 'Roboto', sans-serif;
 }
 
-a:hover{
+.for_download:hover{
 	color: #444947;
 }
