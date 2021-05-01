@@ -71,10 +71,12 @@ tasks:"""
                 # Save the filename into a list, we'll use it later
                 filenames.append(filename)
                 links += '''<a href="'''+url_for('uploaded_file', filename=filename[:-3]+'.pas')+'''"  download>Скачать '''+filename[:-3]+'.pas'+'''</a><br>'''
-        links += '''<a href="/templ-final.docx" download>Скачать отчёт</a>'''
+        links += '''<a href="/templ-final.docx" download>Скачать отчёт</a><br><a href = "/">На главную</a>  '''
         g()
-        return '''<p>'''+links+'''</p><br>
-                  <a href = "/">На главную</a>  
-        '''
+        #return '''<p>'''+links+'''</p><br>
+        #          <a href = "/">На главную</a>  
+        #'''
+
+        return render_template('link.html', links=str(links))
                 
     return render_template('index.html')
