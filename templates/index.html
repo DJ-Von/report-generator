@@ -1,76 +1,66 @@
+
 <!DOCTYPE html>
 <html >
 <head>
   <meta charset="UTF-8">
   <title>Генератор отчётов</title>  
       <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-      <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+      <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
 </head>
 
 <body>
-  <h1>Генератор отчётов</h1>
-    <form action="" method=post enctype=multipart/form-data>
-      
-      <p><input type="text" name="autor" placeholder="Имя, группа, вариант"></p>
-      <p><input type="text" name="work_num" placeholder="Номер работы"></p>
-      <p><input type="text" name="work_name" placeholder="Название работы"></p>
-      <div class="one-task">
-        <p><input type="text" name="1num" placeholder="Номер задачи"></p>      
-        <p><textarea name="1task" placeholder="Задача"></textarea></p>      
-        <p><textarea type="text" name="1data" placeholder="Входные данные. Надо заполнить по типу:(6 пробелов)- x: 100"></textarea></p> 
-        <p><input type="text" name="1file_name" placeholder="Имя файла"></p>
-        <p><input type="text" name="1starts" placeholder="Количество запусков"></p>       
-      </div>
-                     
 
 
-      <div class="form">  
-        <div class="add">+</div>
-      </div>
+<form action="" method=post enctype=multipart/form-data class="decor">
+<div class="form-left-decoration"></div>
+<div class="form-right-decoration"></div>
+<div class="circle"></div>
+<div class="form-inner">
+<h3>Генератор отчётов</h3>
 
-      <script type="text/javascript">       
-        var $add = document.getElementsByClassName('add')[0];
-        var $form = document.getElementsByClassName('form')[0];
-        var $k = 1;
-        var $counter = document.createElement('input');
-        $counter.name = 'counter';
-        $counter.type = 'text';
-        $counter.style = 'display: none';
-        $form.insertBefore($counter, $add); 
-        $counter.value = $k;
-        $add.addEventListener('click', function(event) {
-        var $div1 = document.createElement('div');                  
-        $k += 1;
-        $div1.innerHTML += '<div class="one-task"><p><input type="text" name="'+$k+'num" placeholder="Номер задачи"></p><p><textarea name="'+$k+'task" placeholder="Задача.  Надо заполнить по типу:(6 пробелов)- x: 100"></textarea></p><p><input type="text" name="'+$k+'file_name" placeholder="Имя файла"></p><p><textarea name="'+$k+'data" placeholder="Входные данные" ></textarea></p><p><input type="text" name="'+$k+'starts" placeholder="Количество запусков"></p><br></div>';
-        $counter.value = $k;
-        $form.insertBefore($div1, $add);   
+<input type="text" name="autor" placeholder="Имя, группа, вариант">
+<input type="text" name="work_num" placeholder="Номер работы">
+<input type="text" name="work_name" placeholder="Название работы">
 
-        /*let li = document.querySelectorAll('.one-task');
-        for (var i = 0, len = li.length; i < len; i++) {
-          li[i].onclick = function() {
-          console.log('parentNode', this.parentNode);
-          console.log('element => this', this);
-          this.parentNode.removeChild(this);
-
-        }
-        }*/
-
-
-      });
-
-
-           
-      </script>
-
-      
-
-
-      <p><input type="file" multiple="" name="file[]" class="amount" accept=".py"></p>
-      <p><input type=submit value="Генерировать отчёт"></p>
-      
-    </form>
+<div class="one-task">
+    <p><input type="text" name="1num" placeholder="Номер задачи"></p>
+    <textarea name="1task" placeholder="Задача"></textarea>      
+    <textarea type="text" name="1data" placeholder="Входные данные:(6 пробелов)- x: 100"></textarea>
+    <input type="text" name="1file_name" placeholder="Имя файла">
+    <input type="text" name="1starts" placeholder="Количество запусков">
 </div>
-  
+
+<div class="form" > 
+    <div class="add">Добавить задачу</div>
+</div>
+
+<script type="text/javascript">       
+    var $add = document.getElementsByClassName('add')[0];
+    var $form = document.getElementsByClassName('form')[0];
+    var $k = 1;
+    var $counter = document.createElement('input');
+    
+    $counter.name = 'counter';
+    $counter.type = 'text';
+    $counter.style = 'display: none';
+    $form.insertBefore($counter, $add); 
+    $counter.value = $k;
+    function delNode(el){el.parentNode.parentNode.remove(); $k -=1; $counter.value -= 1;} 
+      $add.addEventListener('click', function(event) {
+        var $div1 = document.createElement('div');                
+        $k += 1;
+        $div1.innerHTML += '<div class="one-task"><p><input type="text" name="'+$k+'num" placeholder="Номер задачи"></p><p><textarea name="'+$k+'task" placeholder="Задача."></textarea></p><p><input type="text" name="'+$k+'file_name" placeholder="Имя файла"></p><p><textarea name="'+$k+'data" placeholder="Входные данные:(6 пробелов)- x: 100" ></textarea></p><p><input type="text" name="'+$k+'starts" placeholder="Количество запусков"><div class="del" onclick="delNode(this)">Удалить задачу</div></p></div>';
+        $counter.value = $k;
+        $form.insertBefore($div1, $add);    
+    });
+</script>
+
+<label for="file_type" class="label_file">Выбрать файлы</label>
+<input type="file" multiple="" name="file[]" id="file_type" accept=".py" placeholder="Загрузите файлы">
+<input type=submit value="Создать отчёт">
+</div>
+</form>
+
   
 </body>
 </html>
