@@ -40,12 +40,13 @@ def result_img(result):
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:ev="http://www.w3.org/2001/xml-events"
-    width="570px" height="{y}px">
+    width="400px" height="{y}px">
     <style>
     .txt {{
     font-size: 10pt;
     font-family: Courier New, monospace;
     fill: #fff;
+    max-width: 500px;
     }}
     </style>
     <rect x="0" y="0" width="400px" height="{y}px" fill="black" />'''+img+'</svg>'
