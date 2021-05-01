@@ -19,12 +19,21 @@ def g():
         print(f'code = ', code)
         open('img_buffer.svg', 'w').write(img_gen.code_img(code))
         cairosvg.svg2png(url='img_buffer.svg', write_to=f'{i.get("file")[:-3]}.png')
+        
+        open(f'{i.get("file")[:-3]}.svg', 'w').write(img_gen.code_img(code))
+        
         conf['tasks'][n] |= {'code': InlineImage(doc, f'{i.get("file")[:-3]}.png')}
+        doc.replace_pic(f'{i.get("file")[:-3]}.png',f'{i.get("file")[:-3]}.svg')
+
         conf['tasks'][n] |= {'results': []}
         for nn, j in enumerate(i.get('data')):
             open('img_buffer.svg', 'w').write(img_gen.result_img(executor.execute(i.get('file'), j)))
             cairosvg.svg2png(url='img_buffer.svg', write_to=f'{i.get("file")[:-3]}_start{nn}.png')
+            
+            open(f'{i.get("file")[:-3]}_start{nn}.svg', 'w').write(img_gen.result_img(executor.execute(i.get('file'), j)))    
             conf['tasks'][n]['results'].append(InlineImage(doc, f'{i.get("file")[:-3]}_start{nn}.png'))
+
+            doc.replace_pic(f'{i.get("file")[:-3]}_start{nn}.png',f'{i.get("file")[:-3]}_start{nn}.svg')
 
     doc.render(conf)
     doc.save("templ-final.docx")
