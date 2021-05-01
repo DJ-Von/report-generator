@@ -89,10 +89,10 @@ body {
 }
 
 .form-inner textarea {
-   resize: none;
    -moz-appearance: none;
    overflow: auto;
    border-radius: 5px;
+   max-width: 100%;
 }
 .form-inner h3 {
    margin-top: 0;
