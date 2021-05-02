@@ -12,4 +12,4 @@
     max-width: 500px;
     }
     </style>
-    <rect x="0" y="0" width="400px" height="60px" fill="black" /><text class="txt" x="10" y="20" xml:space="preserve">Введите число: 100</text><text class="txt" x="10" y="40" xml:space="preserve">Сумма цифр в числе равна:  1</text></svg>
+    <rect x="0" y="0" width="400px" height="60px" fill="black" /><text class="txt" x="10" y="20" xml:space="preserve">Введите число: 256</text><text class="txt" x="10" y="40" xml:space="preserve">Сумма цифр в числе равна:  13</text></svg>

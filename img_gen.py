@@ -1,5 +1,6 @@
 def code_img(code):
     keywords = ['begin', 'end.', 'end;', 'end', 'var', 'uses', 'program']
+    types = ['string', 'integer', 'real', 'longint', 'byte', 'boolean', 'longbool', 'char', 'single', 'double', 'array']
 
     img = ''
     strs = code.split('\n')
@@ -8,6 +9,9 @@ def code_img(code):
         for j in keywords:
             if i.lower().find(j) != -1:
                 i = i.lower().replace(j, f'<tspan style="font-weight: bold;">{j}</tspan>')
+        for k in types:
+            if i.lower().find(k) != -1:
+                i = i.lower().replace(k, f'<tspan style="font-weight: normal; fill: rgb(10,19,143);">{k}</tspan>')
             
         img += f'<text class="txt1" x="10" y="{y}" fill="black" xml:space="preserve">{i}</text>'
         y += 20

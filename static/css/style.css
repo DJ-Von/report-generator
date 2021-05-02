@@ -121,6 +121,7 @@ body {
    overflow: auto;
    border-radius: 5px;
    max-width: 100%;
+   line-height: 20px;
 }
 .form-inner h3 {
    margin-top: 0;

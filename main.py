@@ -70,8 +70,8 @@ tasks:"""
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 # Save the filename into a list, we'll use it later
                 filenames.append(filename)
-                links += '''<a href="'''+url_for('uploaded_file', filename=filename[:-3]+'.pas')+'''"  download>Скачать '''+filename[:-3]+'.pas'+'''</a><br>'''
-        links += '''<a href="/templ-final.docx" download>Скачать отчёт</a><br><a href = "/">На главную</a>  '''
+                links += '''<a class="for_download" href="'''+url_for('uploaded_file', filename=filename[:-3]+'.pas')+'''"  download>Скачать '''+filename[:-3]+'.pas'+'''</a><br>'''
+        links += '''<a class="for_download"  href="/templ-final.docx" download>Скачать отчёт</a><br><a class="for_download" href = "/">На главную</a>  '''
         g()
         #return '''<p>'''+links+'''</p><br>
         #          <a href = "/">На главную</a>  

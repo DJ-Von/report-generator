@@ -6,10 +6,19 @@ work_name: |-
 work_num: 1
 tasks:
   - about: |-
-      Написать программу для складывания всех цифр в трехзначном числе       И проверить на числах 100, 543, 999
+      bgfhfhfghfgh
     num: 1.1
     data:
-      - x: 100
+      - x: 256
     file: num_sum.py
+    starts: 1
+
+  - about: |-
+      fdsfsdfdfssddf
+    num: 1.2
+    data:
+       - a: 245
+         b: 123
+    file: add.py
     starts: 1
 ...
