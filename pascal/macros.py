@@ -2,7 +2,7 @@ import _ast
 from .transPYler import macro, blocks
 
 
-type_to_type = {"int": "Integer",
+type_to_type = {"int": "Longint",
                 "str": "String",
                 "float": "Real"
                 }
@@ -42,10 +42,13 @@ def read(tree):
     return f"{msg}Readln({tree.targets[0].id});"
 
 @macro('print')
-def write(*args):
+def write(*args, x=0, y=0):
     arg = list(map(lambda a: a.replace('"', '\''), args))
     arg = ", ' ', ".join(arg)
-    return {'val': f'Writeln({arg})'}
+    conf = ''
+    print(args)
+    print(x, y) 
+    return {'val': f'{conf}Writeln({arg})'}
 
 def _list(l, r):
     ls = r.get('val').get('list')

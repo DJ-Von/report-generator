@@ -35,6 +35,10 @@ def c_like_for(var, body, param):
     blocks.add_var(var, 'int')
     return f"for {var} := {start} to {finish}-1 do {body};"
 
+@handler("while")
+def _while(compare, body, els):
+    return f"while {compare} do {body};"
+
 @handler("statement_block")
 def statement_block(body):
     tab = '\n'+'    '*blocks.nesting_level

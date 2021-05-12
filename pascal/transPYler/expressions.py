@@ -91,7 +91,7 @@ def function_call(tree):
         name = tree.func.id    
     if name1 := what_macro(name):
         if callable(name1):
-            name = macro(name1, tree.args)
+            name = macro(name1, tree.args, tree.keywords)
             return {'val': name.get('val'), 'type': name.get('type')}
         name = name1
         if 'type' in name:

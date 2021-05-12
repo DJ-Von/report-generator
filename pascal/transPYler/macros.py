@@ -28,7 +28,7 @@ def what_macro(name):
                 if i(name):
                     return macros.get(i)
 
-def macro(name, args):
+def macro(name, args, keys):
     def get_val(val):
         if type(val)==_ast.Constant:
             val = val.value
@@ -38,7 +38,12 @@ def macro(name, args):
             return val
         else:
             return decompile(val)
-    args = str(tuple(map(get_val, args)))
-    return eval(f"name{args}")
+    args = '('+', '.join(list(map(lambda i:'"'+get_val(i)+'"', args)))
+    keys = f", {', '.join(list(map(decompile, keys)))})"
+    print(args+keys)
+    return eval(f"name{args+keys}")
 
-macros = {}
+
+def power(l, r):
+    return {'type': 'int', 'val': f'power({l.get("val")}, {r.get("val")})'}
+macros = {('any', 'any', '**'): power}
