@@ -26,7 +26,7 @@
 <div class="one-task">
     <p><input type="text" name="1num" placeholder="Номер задачи"></p>
     <textarea name="1task" placeholder="Задача"></textarea>      
-    <textarea type="text" name="1data" placeholder="Входные данные:[{x: 100}, {x: 200}]"></textarea>
+    <textarea type="text" name="1data" placeholder="Входные данные:(6 пробелов)- x: 100"></textarea>
     <input type="text" name="1file_name" placeholder="Имя файла">
     <input type="text" name="1starts" placeholder="Количество запусков">
 </div>
@@ -50,7 +50,7 @@
       $add.addEventListener('click', function(event) {
         var $div1 = document.createElement('div');                
         $k += 1;
-        $div1.innerHTML += '<div class="one-task"><p><input type="text" name="'+$k+'num" placeholder="Номер задачи"></p><p><textarea name="'+$k+'task" placeholder="Задача."></textarea></p><p><input type="text" name="'+$k+'file_name" placeholder="Имя файла"></p><p><textarea name="'+$k+'data" placeholder="Входные данные:[{x: 100}, {x: 200}]" ></textarea></p><p><input type="text" name="'+$k+'starts" placeholder="Количество запусков"><div class="del" onclick="delNode(this)">Удалить задачу</div></p></div>';
+        $div1.innerHTML += '<div class="one-task"><p><input type="text" name="'+$k+'num" placeholder="Номер задачи"></p><p><textarea name="'+$k+'task" placeholder="Задача."></textarea></p><p><input type="text" name="'+$k+'file_name" placeholder="Имя файла"></p><p><textarea name="'+$k+'data" placeholder="Входные данные:(6 пробелов)- x: 100" ></textarea></p><p><input type="text" name="'+$k+'starts" placeholder="Количество запусков"><div class="del" onclick="delNode(this)">Удалить задачу</div></p></div>';
         $counter.value = $k;
         $form.insertBefore($div1, $add);    
     });
